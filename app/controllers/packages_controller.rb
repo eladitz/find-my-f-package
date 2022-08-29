@@ -3,5 +3,6 @@ class PackagesController < ApplicationController
   end
 
   def find
+    @package = Package.new
   end
 end
