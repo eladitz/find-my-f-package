@@ -1,0 +1,10 @@
+
+<div id="message-<%= message.id %>">
+  <small>
+    <strong><%= message.user.first_name.chr.upcase %>. <%= message.user.last_name.capitalize %></strong>
+  </small>
+  <p><%= message.content %><br>
+  <small>
+  <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  </small></p>
+</div>

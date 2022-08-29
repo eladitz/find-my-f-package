@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get "find", to: "packages#find"
+  post "received", to: "packages#received"
+  resources :packages, only: [:show, :update]
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 end

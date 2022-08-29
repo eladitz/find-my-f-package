@@ -80,3 +80,4 @@ end
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails" # Uncomment this line
 gem "faker"
+gem "devise"
