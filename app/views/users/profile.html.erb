@@ -1,0 +1,5 @@
+<div class="container">
+  <h2><%= current_user.first_name.capitalize %> <%= current_user.middle_name.capitalize %> <%= current_user.last_name.capitalize %></h2>
+  <div><%= current_user.email %></div>
+  <div><%= link_to "Edit your profile", edit_user_registration_path, class: "btn btn-gradient" %></div>
+</div>

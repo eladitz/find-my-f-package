@@ -1,0 +1,10 @@
+<%= simple_form_for [@package, @address] do |f| %>
+  <%= f.input :package_owner_first_name %>
+  <%= f.input :package_owner_last_name %>
+  <%= f.input :country %>
+  <%= f.input :city %>
+  <%= f.input :post_code %>
+  <%= f.input :street %>
+  <%= f.input :house_number %>
+  <%= f.button :submit %>
+<% end %>
