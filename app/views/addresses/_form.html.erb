@@ -1,0 +1,8 @@
+<%= simple_form_for @address do |f| %>
+  <%= f.input :country, as: :string %>
+  <%= f.input :city %>
+  <%= f.input :post_code %>
+  <%= f.input :street %>
+  <%= f.input :house_number %>
+  <%= f.button :submit %>
+<% end %>
