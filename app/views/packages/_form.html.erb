@@ -1,10 +1,11 @@
-<%= simple_form_for [@package, @address] do |f| %>
-  <%= f.input :package_owner_first_name %>
-  <%= f.input :package_owner_last_name %>
-  <%= f.input :country %>
-  <%= f.input :city %>
-  <%= f.input :post_code %>
-  <%= f.input :street %>
-  <%= f.input :house_number %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+    <%= form_with url: received_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Please enter full name as written on the package"
+      %>
+
+      <%= submit_tag "Submit", class: "btn btn-primary" %>
+    <% end %>
+</div>
