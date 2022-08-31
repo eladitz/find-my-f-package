@@ -1,5 +1,35 @@
 <div class="container">
   <h2><%= current_user.first_name.capitalize %> <%= current_user.middle_name.capitalize %> <%= current_user.last_name.capitalize %></h2>
-  <div><%= current_user.email %></div>
+  <ul class="list-group">
+    <li class="list-group-item"><%= current_user.email %></li>
+  </ul>
+  <h2>Address:</h2>
+  <ul class="list-group">
+    <li class="list-group-item"><%= current_user.address.street %>, <%= current_user.address.house_number %></li>
+    <li class="list-group-item"><%= current_user.address.city %></li>
+    <li class="list-group-item"><%= current_user.address.post_code %></li>
+    <li class="list-group-item"><%= current_user.address.country %></li>
+  </ul>
   <div><%= link_to "Edit your profile", edit_user_registration_path, class: "btn btn-gradient" %></div>
+
+  <% if @packages_receiver.exists? %>
+  <h2>Those packages are waiting for you with:</h2>
+  <ul class="list-group">
+    <% @packages_receiver.each_with_index do |package, i| %>
+      <% @package_receiver = User.find(package.user_reciever_id)  %>
+     <li class="list-group-item"><i class="fa-solid fa-box"></i> <%= @package_receiver.first_name.capitalize %> <%= @package_receiver.last_name.capitalize %></li>
+      <!-- TODO adding a button to marked package arrived safely package -->
+    <% end %>
+  </ul>
+  <% end %>
+  <% if @packages.exists? %>
+    <h2>Packages Received for Neighbours</h2>
+  <ul class="list-group">
+    <% @packages.each_with_index do |package, i| %>
+      <% @package_owner = User.find(package.user_owner_id)  %>
+     <li class="list-group-item"><i class="fa-solid fa-box"></i> <%= @package_owner.first_name.capitalize %> <%= @package_owner.last_name.capitalize %></li>
+      <!-- TODO adding a button to remove package from receiver after owner received it's package -->
+    <% end %>
+  </ul>
+  <% end %>
 </div>

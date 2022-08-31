@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def profile
+    @packages = Package.where(["user_reciever_id = ?", current_user.id])
+    @packages_receiver = Package.where(["user_owner_id = ?", current_user.id])
   end
 
   def adding_profile_form
