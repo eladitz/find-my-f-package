@@ -5,10 +5,10 @@
   </ul>
   <h2>Address:</h2>
   <ul class="list-group">
-    <li class="list-group-item"><%= current_user.address.street %>, <%= current_user.address.house_number %></li>
-    <li class="list-group-item"><%= current_user.address.city %></li>
-    <li class="list-group-item"><%= current_user.address.post_code %></li>
-    <li class="list-group-item"><%= current_user.address.country %></li>
+    <li class="list-group-item"><%= @address.street %>, <%= @address.house_number %></li>
+    <li class="list-group-item"><%= @address.city %></li>
+    <li class="list-group-item"><%= @address.post_code %></li>
+    <li class="list-group-item"><%= @address.country %></li>
   </ul>
   <div><%= link_to "Edit your profile", edit_user_registration_path, class: "btn btn-gradient" %></div>
 

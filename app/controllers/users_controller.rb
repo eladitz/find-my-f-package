@@ -2,10 +2,11 @@ class UsersController < ApplicationController
   def profile
     @packages = Package.where(["user_receiver_id = ?", current_user.id])
     @packages_receiver = Package.where(["user_owner_id = ?", current_user.id])
+    @address = Address.find(current_user.address_id)
   end
 
   def adding_profile_form
-    if current_user.present? && current_user.address_id.present?
+    if current_user.address_id.present?
       redirect_to(profile_path)
     end
   end
@@ -15,8 +16,6 @@ class UsersController < ApplicationController
       @user = current_user
       @user.update(user_params)
       redirect_to(user_address_path)
-    else
-      redirect_to(profile_path)
     end
   end
 
