@@ -11,7 +11,7 @@ class PackagesController < ApplicationController
                                not_register_user_name: params[:query])
 
         @package.save
-        redirect_to(print_page_path, notice: "A package was added but owner still not in our system,
+        redirect_to(profile_path, notice: "A package was added but owner still not in our system,
                                               they will be informed as soon as he join")
       else
         @package = Package.new(user_owner_id: @users[0].id,

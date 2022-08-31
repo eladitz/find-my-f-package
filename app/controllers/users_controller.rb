@@ -5,14 +5,18 @@ class UsersController < ApplicationController
   end
 
   def adding_profile_form
-
+    if current_user.present? && current_user.address_id.present?
+      redirect_to(profile_path)
+    end
   end
 
   def adding_profile_info
-    if current_user.present?
+    if current_user.present? && !current_user.address_id.present?
       @user = current_user
       @user.update(user_params)
       redirect_to(user_address_path)
+    else
+      redirect_to(profile_path)
     end
   end
 
