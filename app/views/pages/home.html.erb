@@ -6,7 +6,9 @@
     <%= link_to "I Recieved a F* Package", received_path, class: "btn btn-gradient" %>
   </div>
   <div>
-    <%= link_to "Login / Register", new_user_registration_path, class: "btn btn-gradient" %>
+    <% if !user_signed_in? %>
+      <%= link_to "Login / Register", new_user_registration_path, class: "btn btn-gradient" %>
+    <% end %>
   </div>
 
 </div>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def profile
-    @packages = Package.where(["user_reciever_id = ?", current_user.id])
+    @packages = Package.where(["user_receiver_id = ?", current_user.id])
     @packages_receiver = Package.where(["user_owner_id = ?", current_user.id])
   end
 

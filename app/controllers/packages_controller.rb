@@ -6,11 +6,21 @@ class PackagesController < ApplicationController
                           "%#{temp_user[0]}%", "%#{temp_user[1]}%")
 
       if @users.count.zero?
-        raise
+        @package = Package.new(user_receiver_id: current_user.id,
+                               address_id: current_user.address_id,
+                               not_register_user_name: params[:query])
+
+        @package.save
+        redirect_to(print_page_path, notice: "A package was added but owner still not in our system,
+                                              they will be informed as soon as he join")
+      else
+        @package = Package.new(user_owner_id: @users[0].id,
+                               user_receiver_id: current_user.id,
+                               address_id: current_user.address_id)
+
+        @package.save
+        redirect_to(profile_path, notice: "A package was added and owner will be informed")
       end
-      @package = Package.new(user_owner_id: @users[0].id, user_reciever_id: current_user.id, address_id: current_user.address_id)
-      @package.save
-      redirect_to(profile_path, notice: "A package was added and owner will be informed")
     end
   end
 

@@ -16,7 +16,7 @@
   <h2>Those packages are waiting for you with:</h2>
   <ul class="list-group">
     <% @packages_receiver.each_with_index do |package, i| %>
-      <% @package_receiver = User.find(package.user_reciever_id)  %>
+      <% @package_receiver = User.find(package.user_receiver_id)  %>
      <li class="list-group-item"><i class="fa-solid fa-box"></i> <%= @package_receiver.first_name.capitalize %> <%= @package_receiver.last_name.capitalize %></li>
       <!-- TODO adding a button to marked package arrived safely package -->
     <% end %>
@@ -25,10 +25,14 @@
   <% if @packages.exists? %>
     <h2>Packages Received for Neighbours</h2>
   <ul class="list-group">
-    <% @packages.each_with_index do |package, i| %>
-      <% @package_owner = User.find(package.user_owner_id)  %>
-     <li class="list-group-item"><i class="fa-solid fa-box"></i> <%= @package_owner.first_name.capitalize %> <%= @package_owner.last_name.capitalize %></li>
-      <!-- TODO adding a button to remove package from receiver after owner received it's package -->
+      <% @packages.each_with_index do |package, i| %>
+      <% if package.user_owner_id %>
+        <% @package_owner = User.find(package.user_owner_id)  %>
+      <li class="list-group-item"><i class="fa-solid fa-box"></i> <%= @package_owner.first_name.capitalize %> <%= @package_owner.last_name.capitalize %></li>
+        <!-- TODO adding a button to remove package from receiver after owner received it's package -->
+      <% else %>
+       <li class="list-group-item"><i class="fa-solid fa-box"></i> <%= package.not_register_user_name.capitalize %> </li>
+      <% end %>
     <% end %>
   </ul>
   <% end %>
