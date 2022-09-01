@@ -1,4 +1,6 @@
 // Specific CSS for your home-page
+$header-height: 110px;
+$footer-height: 120px;
 body {
   background: $gray;
   color: $cream;
@@ -8,6 +10,9 @@ body {
 }
 .btn-submit {
   margin: 0;
+}
+.content {
+  min-height: calc(100vh - #{$header-height + $footer-height});
 }
 h2 {
   margin-top: 20px;
