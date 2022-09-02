@@ -24,7 +24,7 @@ class AddressesController < ApplicationController
         redirect_to(root_path, notice: "Address was succesfully added.")
         break
       else
-        render :new, status: :unprocessable_entity
+        redirect_to(root_path, notice: "confused")
       end
     end
   end
