@@ -1,24 +1,27 @@
 <div class="d-flex justify-content-center h-100 ">
-<div class="container-fluid">
-  <div class="row g-2 justify-content-center">
-    <div class="col-6 col-11-md">
-      <div class="p-3">
-        <%= link_to "Find my F* Package", profile_path, class: "btn btn-primary btn-lg col-12 p-3" %>
+  <div class="container-fluid">
+    <div class="row g-2 justify-content-center">
+      <div class="col-6 col-11-md">
+        <div class="p-3">
+          <%= link_to "Find my F* Package", profile_path, class: "btn btn-primary btn-lg col-12 p-3" %>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row g-2 justify-content-center">
-    <div class="col-6 col-11-md">
-      <div class="p-3">
-        <%= link_to "I Recieved a F* Package", received_path, class: "btn btn-primary btn-lg col-12 p-3" %>
+    <div class="row g-2 justify-content-center">
+      <div class="col-6 col-11-md">
+        <div class="p-3">
+          <%= link_to "I Recieved a F* Package", received_path, class: "btn btn-primary btn-lg col-12 p-3" %>
+        </div>
       </div>
     </div>
+    <% if !user_signed_in? %>
+    <div class="row g-2 justify-content-center">
+      <div class="col-6 col-11-md">
+        <div class="p-3">
+          <%= link_to "Login / Register", new_user_registration_path, class: "btn btn-primary col-4" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </div>
-</div>
-
-
-  <% if !user_signed_in? %>
-        <%= link_to "Login / Register", new_user_registration_path, class: "btn btn-primary col-4" %>
-  <% end %>
-
 </div>

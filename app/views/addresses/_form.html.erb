@@ -1,8 +1,8 @@
-<%= simple_form_for @address do |f| %>
-  <%= f.input :country, as: :string %>
+<%= simple_form_for @address, :html => {:"data-controller" => 'controller-form'} do |f| %>
+  <%= f.input :country, as: :string, "dataTarget": "target-country" %>
   <%= f.input :city %>
   <%= f.input :post_code %>
   <%= f.input :street %>
   <%= f.input :house_number %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class: 'btn-primary' %>
 <% end %>
