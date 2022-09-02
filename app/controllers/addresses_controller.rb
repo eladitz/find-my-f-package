@@ -5,15 +5,11 @@ class AddressesController < ApplicationController
 
   def create
     @addresses = Address.where('country ILIKE ? AND city ILIKE ?
-                               AND post_code ILIKE ?
-                               AND street ILIKE ?
-                               AND house_number ILIKE ?',
-                               "%#{params[:country]}%",
-                               "%#{params[:city]}%",
-                               "%#{params[:post_code]}%",
-                               "%#{params[:street]}%",
-                               "%#{params[:house_number]}%")
-
+                              AND post_code ILIKE ? AND street ILIKE ?
+                              AND house_number ILIKE ?',
+                              "%#{params[:country]}%",
+                              "%#{params[:city]}%", "%#{params[:post_code]}%",
+                              "%#{params[:street]}%", "%#{params[:house_number]}%")
     @address = Address.new(address_params)
 
     @addresses.each do |address|

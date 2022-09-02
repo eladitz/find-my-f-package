@@ -1,0 +1,23 @@
+<div
+  data-controller="places"
+  data-action="google-maps-callback@window->places#initAutocomplete"
+  data-places-country-value='["en"]'
+>
+  <input
+    type="text"
+    data-action="keydown->places#preventSubmit"
+    data-places-target="address"
+    placeholder="Search a location"
+  />
+
+  <input type="hidden" data-places-target="city" />
+  <input type="hidden" data-places-target="streetNumber" />
+  <input type="hidden" data-places-target="route" />
+  <input type="hidden" data-places-target="county" />
+  <input type="hidden" data-places-target="state" />
+  <input type="hidden" data-places-target="postalCode" />
+  <input type="hidden" data-places-target="country" />
+
+  <input type="hidden" data-places-target="longitude" />
+  <input type="hidden" data-places-target="latitude" />
+</div>
