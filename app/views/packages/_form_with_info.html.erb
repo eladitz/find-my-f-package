@@ -5,8 +5,13 @@
           <h3>Which days and times are you home?</h3>
           <div class="days">
             <div class="day">
-            <input id="days_monday" name="post[days_monday][]" type="checkbox" value="1" />
-            <label for="days_monday">Monday</label>
+            <label class="checkbox" for="days_monday">
+              <span class="icons">
+                <span class="first-icon"></span><span class="second-icon fa fa-check"></span></span>
+                <input id="days_monday" name="post[days_monday][]" type="checkbox" value="1" />
+                <label>Monday</label>
+            </label>
+
               <select name="monday_from" id="monday_available_time_from" >
                 <option value="07:00">07:00</option>
                 <option value="08:00">08:00</option>
