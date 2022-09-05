@@ -1,5 +1,6 @@
 class PackagesController < ApplicationController
   def received
+    raise
     if params[:query].present?
       temp_user = params[:query].split
       @users = User.where('first_name ILIKE ? AND last_name ILIKE ?',
@@ -25,6 +26,18 @@ class PackagesController < ApplicationController
   end
 
   def find
+  end
+
+  def availability
+    @currentPackage = Package.find(1)
+    if params[:availability].present?
+      @currentPackage.update(availability: params[:availability])
+    end
+
+    if params[:comment].present?
+      @currentPackage.update(comment: params[:comment])
+    end
+    @currentPackage.save
   end
 
   private

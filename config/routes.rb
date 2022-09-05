@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "find", to: "packages#find"
   post "find", to: "packages#find"
   get "received", to: "packages#received"
+  get "packages/:id/availability", to: "packages#availability", as: "availability"
   get "profile", to: "users#profile"
   get "print_page", to: "users#print_page"
   get "users/adding_profile_form", to: "users#adding_profile_form", as: "adding_profile_form"

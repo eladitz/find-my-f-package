@@ -4,11 +4,14 @@
 
 import { application } from "./application"
 
-import AddressFormController from "./form_controller"
-application.register("form", AddressFormController)
+import AvailabilityController from "./availability_controller"
+application.register("availability", AvailabilityController)
 
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
+
+import FormController from "./form_controller"
+application.register("form", FormController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
