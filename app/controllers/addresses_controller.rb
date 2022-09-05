@@ -4,6 +4,7 @@ class AddressesController < ApplicationController
   end
 
   def create
+    # TODO - fix edge case issue when there is no addresses in database
     @addresses = Address.where('country ILIKE ? AND city ILIKE ?
                               AND post_code ILIKE ? AND street ILIKE ?
                               AND house_number ILIKE ?',
@@ -24,10 +25,18 @@ class AddressesController < ApplicationController
         redirect_to(root_path, notice: "Address was succesfully added.")
         break
       else
-        redirect_to(root_path, notice: "confused")
+        render :new, status: :unprocessable_entity
       end
     end
   end
+
+  def search_countries
+    if params[:query].present?
+      @countries = Address.where("country ILIKE ?", "%#{params[:query]}%")
+    end
+  end
+
+
 
   private
 

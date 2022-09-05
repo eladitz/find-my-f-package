@@ -23,7 +23,7 @@
   </ul>
   <% end %>
   <% if @packages.exists? %>
-    <h2>Packages Received for Neighbours</h2>
+  <h2>Packages Received for Neighbours</h2>
   <ul class="list-group">
       <% @packages.each_with_index do |package, i| %>
       <% if package.user_owner_id %>

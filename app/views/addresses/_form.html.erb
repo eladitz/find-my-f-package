@@ -1,8 +1,8 @@
-<%= simple_form_for @address, html: {:"data-controller" => 'address-form'} do |f| %>
-  <%= f.input :country, as: :string, input_html: { "data-action": "keyup->address-form#country", "data-form-country-target": "input"} %>
-  <%= f.input :city, input_html: { "data-action": "keyup->address-form#city" } %>
-  <%= f.input :post_code, input_html: { "data-action": "keyup->address-form#post_code" } %>
-  <%= f.input :street, input_html: { "data-action": "keyup->address-form#street" } %>
-  <%= f.input :house_number, input_html: { "data-action": "keyup->address-form#house_number" } %>
-  <%= f.button :submit, class: 'btn-primary', "data-action": "click->address-form#submit"  %>
+<%= simple_form_for @address, html: {:"data-controller" => 'form'} do |f| %>
+  <%= f.input :country, as: :string, input_html: { "data-action": "keyup->form#country", "data-form-country-target": "input"} %>
+  <%= f.input :city, input_html: { "data-action": "keyup->form#city" } %>
+  <%= f.input :post_code, input_html: { "data-action": "keyup->form#post_code" } %>
+  <%= f.input :street, input_html: { "data-action": "keyup->form#street" } %>
+  <%= f.input :house_number, input_html: { "data-action": "keyup->form#house_number" } %>
+  <%= f.button :submit, class: 'btn-primary'  %>
 <% end %>
