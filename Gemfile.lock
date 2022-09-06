@@ -111,6 +111,7 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    erb-formatter (0.3.0)
     erubi (1.11.0)
     execjs (2.8.1)
     faker (2.22.0)
@@ -272,6 +273,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  erb-formatter
   faker
   font-awesome-sass (~> 6.1)
   jbuilder

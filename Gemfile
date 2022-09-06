@@ -83,3 +83,4 @@ gem "faker"
 gem "devise"
 gem "pg_search"
 gem 'pry-byebug'
+gem 'erb-formatter'
