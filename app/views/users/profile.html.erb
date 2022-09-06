@@ -11,29 +11,54 @@
     <li class="list-group-item"><%= @address.country %></li>
   </ul>
   <div><%= link_to "Edit your profile", edit_user_registration_path, class: "btn btn-primary btn-lg" %></div>
-
   <% if @packages_receiver.exists? %>
-  <h2>Those packages are waiting for you with:</h2>
-  <ul class="list-group">
-    <% @packages_receiver.each_with_index do |package, i| %>
-      <% @package_receiver = User.find(package.user_receiver_id)  %>
-     <li class="list-group-item"><i class="fa-solid fa-box"></i> <%= @package_receiver.first_name.capitalize %> <%= @package_receiver.last_name.capitalize %></li>
-      <!-- TODO adding a button to marked package arrived safely package -->
-    <% end %>
-  </ul>
+    <h2>Those packages are waiting for you with:</h2>
+    <ul class="list-group">
+      <% @packages_receiver.each_with_index do |package, i| %>
+        <% @package_receiver = User.find(package.user_receiver_id)  %>
+        <li class="list-group-item"><i class="fa-solid fa-box"></i> <%= @package_receiver.first_name.capitalize %> <%= @package_receiver.last_name.capitalize %>
+          <div class="flex-d">
+          <strong>Which suppose to be home at those times</strong>
+              <% if package.availability %>
+                <% package.availability.split(";").each do |a| %>
+                  <% arr = a.split("|") %>
+                  <% if arr[1] == "true" %>
+                    <div class="col-2"><strong><%= arr[0] %></strong><br>
+                          <%= arr[2] %>-<%= arr[3] %></div>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+        </li>
+        <!-- TODO adding a button to marked package arrived safely package -->
+      <% end %>
+    </ul>
   <% end %>
   <% if @packages.exists? %>
-  <h2>Packages Received for Neighbours</h2>
-  <ul class="list-group">
+    <h2>Packages Received for Neighbours</h2>
+    <ul class="list-group">
       <% @packages.each_with_index do |package, i| %>
-      <% if package.user_owner_id %>
-        <% @package_owner = User.find(package.user_owner_id)  %>
-      <li class="list-group-item"><i class="fa-solid fa-box"></i> <%= @package_owner.first_name.capitalize %> <%= @package_owner.last_name.capitalize %></li>
-        <!-- TODO adding a button to remove package from receiver after owner received it's package -->
-      <% else %>
-       <li class="list-group-item"><i class="fa-solid fa-box"></i> <%= package.not_register_user_name.capitalize %> </li>
+        <% if package.user_owner_id %>
+          <% @package_owner = User.find(package.user_owner_id)  %>
+          <li class="list-group-item">
+            <i class="fa-solid fa-box"></i> <%= @package_owner.first_name.capitalize %> <%= @package_owner.last_name.capitalize %>
+            <div class="flex-d">
+              <% if package.availability %>
+                <% package.availability.split(";").each do |a| %>
+                  <% arr = a.split("|") %>
+                  <% if arr[1] == "true" %>
+                    <div class="col-2"><strong><%= arr[0] %><strong><br>
+                          <%= arr[2] %>-<%= arr[3] %></div>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </li>
+              <!-- TODO adding a button to remove package from receiver after owner received it's package -->
+            <% else %>
+              <li class="list-group-item"><i class="fa-solid fa-box"></i> <%= package.not_register_user_name.capitalize %> </li>
+            <% end %>
+          </ul>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
-  <% end %>
-</div>
+    </div>

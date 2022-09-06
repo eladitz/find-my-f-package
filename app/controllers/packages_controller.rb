@@ -1,3 +1,5 @@
+require 'json'
+
 class PackagesController < ApplicationController
   def received
     if params[:query].present?
@@ -38,10 +40,6 @@ class PackagesController < ApplicationController
       @currentPackage.save
       redirect_to(profile_path, notice: "Your availability info was added")
     end
-  end
-
-  def submit
-
   end
 
   private

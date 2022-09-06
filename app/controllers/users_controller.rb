@@ -19,6 +19,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def print_page
+    @packages = Package.where(["user_receiver_id = ?", current_user.id])
+    @packages_receiver = Package.where(["user_owner_id = ?", current_user.id])
+    @address = Address.find(current_user.address_id)
+  end
+
   private
 
   def user_params
