@@ -53,6 +53,7 @@
                     <% end %>
                   <% end %>
                 </div>
+                <%= link_to "Print a note", print_page_path(package.id), class: "btn btn-primary btn-lg col-12 p-3" %>
               </li>
               <!-- TODO adding a button to remove package from receiver after owner received it's package -->
             <% else %>

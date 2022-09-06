@@ -1,0 +1,10 @@
+.print_page {
+  background: white;
+  color: black;
+  padding:30px;
+  p, div, span, h1, h2, h3 {
+    all: unset;
+    color: black;
+    background: white;
+  }
+}
