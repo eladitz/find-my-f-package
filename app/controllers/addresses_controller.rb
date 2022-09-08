@@ -4,14 +4,13 @@ class AddressesController < ApplicationController
   end
 
   def create
-    # TODO - fix edge case issue when there is no addresses in database
     @address = Address.new(address_params)
+    @user = current_user
+    add_existing_package_to_new_user(@user)
     if address_exist?(@address) && current_user.present?
-      @user = current_user
       @user.update(address_id: @address.id)
       redirect_to(root_path, notice: "Added to address succesfully.")
     elsif @address.save
-      @user = current_user
       @user.update(address_id: @address.id)
       redirect_to(root_path, notice: "Address was succesfully added.")
     else
@@ -51,6 +50,16 @@ class AddressesController < ApplicationController
         return true
       else
         return false
+      end
+    end
+  end
+
+  def add_existing_package_to_new_user(user)
+    fullname = "#{user.first_name} #{user.last_name}"
+    @packages = Package.where(["not_register_user_name = ?", fullname])
+    unless @packages.size.zero?
+      @packages.each do |package|
+        package.update(user_owner_id: @user.id)
       end
     end
   end
