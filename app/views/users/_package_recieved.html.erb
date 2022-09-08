@@ -1,0 +1,28 @@
+<ul class="list-group">
+  <% @packages.each_with_index do |package, i| %>
+    <li class="list-group-item"><i class="fa-solid fa-box"></i>
+      <% if package.not_register_user_name %>
+        <strong> <%= package.not_register_user_name.capitalize %> </strong><br />
+      <% else %>
+        <% @package_owner = User.find(package.user_owner_id) %>
+        <strong><%= @package_owner.first_name.capitalize %> <%= @package_owner.last_name.capitalize %> </strong>
+      <% end %>
+
+      <% if package.availability %>
+        <% package.availability.split(";").each do |a| %>
+          <% arr = a.split("|") %>
+          <% if arr[1] == "true" %>
+            <div class="col-2"><strong><%= arr[0] %></strong><br>
+            <%= arr[2] %>-<%= arr[3] %></div>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% if package.comment %>
+        <strong>Comment:</strong><br>
+        <%= package.comment %>
+      <% end %>
+      <%= link_to "Print a note", print_page_path(package.id), class: "btn btn-primary btn-lg col-12 p-3" %>
+    </li>
+  <% end %>
+</ul>

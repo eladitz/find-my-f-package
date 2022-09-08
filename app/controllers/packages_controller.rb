@@ -1,5 +1,3 @@
-require 'json'
-
 class PackagesController < ApplicationController
   def received
     if params[:query].present?
@@ -11,7 +9,6 @@ class PackagesController < ApplicationController
         @package = Package.new(user_receiver_id: current_user.id,
                                address_id: current_user.address_id,
                                not_register_user_name: params[:query])
-
         @package.save
         redirect_to(availability_path(@package.id), notice: "A package was added but owner still not in our system,
                                               they will be informed as soon as he join")

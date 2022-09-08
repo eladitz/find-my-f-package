@@ -7,10 +7,15 @@ class UsersController < ApplicationController
 
   def print_page
     @package = Package.find_by(["user_receiver_id = ?", current_user.id])
-    @package_owner = User.find(@package.user_owner_id)
+    if @package.not_register_user_name
+      @package_owner = @package.not_register_user_name
+    else
+      @package_owner = User.find(@package.user_owner_id)
+    end
     @package_receiver = current_user.id
     @address = Address.find(current_user.address_id)
   end
+
 
 
   def adding_profile_form
@@ -25,13 +30,6 @@ class UsersController < ApplicationController
       @user.update(user_params)
       redirect_to(user_address_path)
     end
-  end
-
-  def print_page
-    @package = Package.find_by(["user_receiver_id = ?", current_user.id])
-    @package_owner = User.find(@package.user_owner_id)
-    @package_receiver = current_user.id
-    @address = Address.find(current_user.address_id)
   end
 
   private

@@ -1,5 +1,11 @@
 <div class="container print_page">
-  <h1>Dear <strong><%= @package_owner.first_name.capitalize %> <%= @package_owner.last_name.capitalize %></strong></h1>
+  <h1>Dear <strong>
+  <% if @package.not_register_user_name %><br><br>
+    <%= @package.not_register_user_name %>
+  <% else %>
+    <%= @package_owner.first_name.capitalize %> <%= @package_owner.last_name.capitalize %>
+  <% end %>
+  </strong></h1>
   <br><br>
   <p>I have received a package for you, you can come pick it up on those times.</p>
   <br>

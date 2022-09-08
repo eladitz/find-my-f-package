@@ -1,0 +1,22 @@
+<ul class="list-group">
+  <% @packages_receiver.each_with_index do |package, i| %>
+    <% @package_receiver = User.find(package.user_receiver_id)  %>
+    <li class="list-group-item"><i class="fa-solid fa-box"></i>
+      <%= @package_receiver.first_name.capitalize %> <%= @package_receiver.last_name.capitalize %><br>
+      <strong>Which suppose to be home at those times</strong>
+      <% if package.availability %>
+        <% package.availability.split(";").each do |a| %>
+          <% arr = a.split("|") %>
+          <% if arr[1] == "true" %>
+              <div class="col-2"><strong><%= arr[0] %></strong><br>
+              <%= arr[2] %>-<%= arr[3] %></div>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if package.comment %>
+        <strong>Comment:</strong><br>
+        <%= package.comment %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
