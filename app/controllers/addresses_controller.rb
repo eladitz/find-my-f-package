@@ -4,11 +4,17 @@ class AddressesController < ApplicationController
   end
 
   def create
+    @addresses = Address.where('country ILIKE ? AND city ILIKE ?
+      AND post_code ILIKE ? AND street ILIKE ?
+      AND house_number ILIKE ?',
+      "%#{params[:country]}%",
+      "%#{params[:city]}%", "%#{params[:post_code]}%",
+      "%#{params[:street]}%", "%#{params[:house_number]}%")
     @address = Address.new(address_params)
     @user = current_user
     add_existing_package_to_new_user(@user)
     if address_exist?(@address) && current_user.present?
-      @user.update(address_id: @address.id)
+      @user.update(address_id: @addresses[0].id)
       redirect_to(root_path, notice: "Added to address succesfully.")
     elsif @address.save
       @user.update(address_id: @address.id)
@@ -35,12 +41,6 @@ class AddressesController < ApplicationController
   end
 
   def address_exist?(address1)
-    @addresses = Address.where('country ILIKE ? AND city ILIKE ?
-      AND post_code ILIKE ? AND street ILIKE ?
-      AND house_number ILIKE ?',
-      "%#{params[:country]}%",
-      "%#{params[:city]}%", "%#{params[:post_code]}%",
-      "%#{params[:street]}%", "%#{params[:house_number]}%")
     @addresses.each do |address|
       if address1.country == address.country &&
         address1.city == address.city &&
