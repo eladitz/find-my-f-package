@@ -7,7 +7,7 @@
   <% end %>
   </strong></h1>
   <br><br>
-  <p>I have received a package for you, you can come pick it up on those times.</p>
+  <p><%= t("i_have_received_a_for_you") %></p>
   <br>
   <div class="flex-d">
     <% if @package.availability %>
@@ -21,15 +21,15 @@
       <% end %>
     <% end %>
     <% if @package.comment %><br><br>
-      <p>Comment:<br>
+      <p><%= t("Comment") %><br>
       <%= @package.comment %></p><br><br>
     <% end %>
   </div>
-  <h2>Kind regards, <br><strong><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></strong></h2><br><br>
-  <div>You can also Find Your F* Package by signing up to our website at <br><strong>www.findyourfpackage.com</strong></div><br><br>
+  <h2><%= t("kind_regards") %> <br><strong><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></strong></h2><br><br>
+  <div><%= t("you_can_also_find") %><br><strong>www.findyourfpackage.com</strong></div><br><br>
 
   <img src="https://res.cloudinary.com/divxkz0vc/image/upload/v1662478332/findmyfpackage_kn0gke.png" style="float:right; width:200px; margin-top:-305px;">
-  <a href="#" onclick="window.print();return false;" >Click here to print</a>
+  <a href="#" onclick="window.print();return false;" ><%= t("click_here_to_print") %></a>
 
   <%= link_to "Go back to profile", profile_path, class: "btn btn-primary btn-lg col-12 p-3" %>
 

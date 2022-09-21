@@ -12,11 +12,11 @@
   </ul>
   <div><%= link_to "Edit your profile", edit_user_registration_path, class: "btn btn-primary btn-lg" %></div>
     <% if @packages_receiver.exists? %>
-      <h2>Those packages are waiting for you with:</h2>
+      <h2><%= t("those_packages_are_waiting_for_you_with") %></h2>
       <%= render "package_waiting" %>
     <% end %>
       <% if @packages.exists? %>
-        <h2>Packages Received for Neighbours</h2>
-        <%= render "package_recieved" %>
+        <h2><%= t("packages_received_for_neighbours") %></h2>
+        <%= render "package_received" %>
       <% end %>
     </div>

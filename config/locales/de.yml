@@ -1,0 +1,20 @@
+# Files in the config/locales directory are used for internationalization
+
+de:
+  find_my_f_package: "Finden Sie mein F* Paket"
+  i_received_a_f_package: "Ich habe ein F* Paket erhalten"
+  login_register: "Einloggen / Anmelden"
+  about_title: "Über"
+  about_content: "Willkommen bei \"Find my F* Package\", ich habe diese Website erstellt, nachdem ich ständig auf diese einfache Frage gestoßen bin, während ich auf die Ankunft einer Sendung gewartet habe, nur um einen Tag später herauszufinden, dass es bei meinem Nachbarn war."
+  home: "Startseite"
+  about: "Über"
+  login: "Einloggen"
+  profile: "Profil"
+  log_out: "Ausloggen"
+  deutsche: "Deutsche"
+  english: "English"
+  language: "Sprache"
+  sign_up: "Sign up"
+  email: "Email"
+  password: "Password"
+  password_confirmation: "Password confirmation"

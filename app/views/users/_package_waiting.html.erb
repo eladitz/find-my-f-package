@@ -3,7 +3,7 @@
     <% @package_receiver = User.find(package.user_receiver_id)  %>
     <li class="list-group-item"><i class="fa-solid fa-box"></i>
       <%= @package_receiver.first_name.capitalize %> <%= @package_receiver.last_name.capitalize %><br>
-      <strong>Which suppose to be home at those times</strong>
+      <strong><%= t("which_suppose_to_be_home") %></strong>
       <% if package.availability %>
         <% package.availability.split(";").each do |a| %>
           <% arr = a.split("|") %>
@@ -14,7 +14,7 @@
         <% end %>
       <% end %>
       <% if package.comment %>
-        <strong>Comment:</strong><br>
+        <strong><%= t("Comment") %></strong><br>
         <%= package.comment %>
       <% end %>
     </li>
