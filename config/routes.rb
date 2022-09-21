@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get "about", to: "pages#about"
   get "find", to: "packages#find"
   post "find", to: "packages#find"
   get "received", to: "packages#received"

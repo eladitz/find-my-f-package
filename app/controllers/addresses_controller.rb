@@ -25,9 +25,7 @@ class AddressesController < ApplicationController
   end
 
   def search_countries
-    if params[:query].present?
-      @countries = Address.where("country ILIKE ?", "%#{params[:query]}%")
-    end
+    return @countries = Address.where("country ILIKE ?", "%#{params[:query]}%") if params[:query].present?
   end
 
   private
@@ -41,16 +39,12 @@ class AddressesController < ApplicationController
   end
 
   def address_exist?(address1)
-    @addresses.each do |address|
-      if address1.country == address.country &&
-        address1.city == address.city &&
-        address1.post_code == address.post_code &&
-        address1.street == address.street &&
-        address1.house_number == address.house_number
-        return true
-      else
-        return false
-      end
+    if address1.country == @addresses[0].country && address1.city == @addresses[0].city &&
+       address1.post_code == @addresses[0].post_code && address1.street == @addresses[0].street &&
+       address1.house_number == @addresses[0].house_number
+      return true
+    else
+      return false
     end
   end
 
