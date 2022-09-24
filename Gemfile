@@ -84,3 +84,6 @@ gem "devise"
 gem "pg_search"
 gem 'pry-byebug'
 gem 'erb-formatter'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
