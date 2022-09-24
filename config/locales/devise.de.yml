@@ -28,7 +28,7 @@ en:
       password_change:
         subject: "Passwort geändert"
     omniauth_callbacks:
-      failure: "Konnte Sie nicht von %{kind} authentifizieren, weil "%{reason}\"."
+      failure: "Konnte Sie nicht von %{kind} authentifizieren, weil \"%{reason}\"."
       success: "Erfolgreich vom Konto %{kind} authentifiziert."
     passwords:
       no_token: "Sie können nicht auf diese Seite zugreifen, wenn Sie nicht von einer E-Mail zum Zurücksetzen des Passworts kommen. Wenn Sie von einer E-Mail zum Zurücksetzen des Kennworts kommen, stellen Sie bitte sicher, dass Sie die vollständige URL verwendet haben."
